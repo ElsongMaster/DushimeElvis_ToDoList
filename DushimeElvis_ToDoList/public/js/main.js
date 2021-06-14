@@ -72,5 +72,71 @@ inputTaskName.addEventListener("keyup", (e) => {
   }
 });
 
+let functManipIcon = () => {
+  let tab_IconDelete;
+  let tab_IconEdit;
+  container_CreatedTask.addEventListener("click", (e) => {
+    tab_IconDelete = Array.from(document.querySelectorAll(".fa-trash-alt"));
+    tab_IconEdit = Array.from(document.querySelectorAll(".fa-edit"));
+    if (tab_IconDelete.includes(e.target)) {
+      e.target.parentElement.parentElement.remove();
+    } else if (tab_IconEdit.includes(e.target)) {
+      let container_INode = e.target.parentElement;
+      container_INode.classList.toggle("invisible");
+
+      let labelNode =
+        e.target.parentElement.parentElement.querySelector("label");
+      labelNode.classList.toggle("invisible");
+      labelNode.hidden = true;
+      console.log(labelNode);
+
+      let inputTmp = document.createElement("input");
+      labelNode.parentElement.insertBefore(inputTmp, labelNode);
+      inputTmp.addEventListener("keyup", (e) => {
+        if (e.key == "Enter") {
+          labelNode.textContent = inputTmp.value;
+          labelNode.parentElement.insertBefore(labelNode, inputTmp);
+          container_INode.classList.toggle("invisible");
+          labelNode.classList.toggle("invisible");
+          inputTmp.remove();
+        }
+      });
+    }
+  });
+};
+
+let tab_BtnFilter = Array.from(container_ButtonFilter.children);
+console.log(tab_BtnFilter);
+let tab_task;
+let DisplayTaskAccordingBtnFilter = () => {
+  if (tab_BtnFilter.includes(e.target)) {
+    tab_task = Array.from(container_CreatedTask.children);
+    if (e.target == tab_BtnFilter[0]) {
+      tab_task.forEach((elt) => {
+        elt.display = "flex";
+      });
+    } else if (e.target == tab_BtnFilter[0]) {
+      tab_task.forEach((elt) => {
+        if (elt.querySelector("input").checked) {
+          elt.display = "flex";
+        } else {
+          elt.display = "none";
+        }
+      });
+    } else {
+      tab_task.forEach((elt) => {
+        if (elt.querySelector("input").checked) {
+          elt.display = "none";
+        } else {
+          elt.display = "flex";
+        }
+      });
+    }
+  }
+};
+tab_BtnFilter.forEach((elt) => {
+  elt.addEventListener("click", DisplayTaskAccordingBtnFilter);
+});
+functManipIcon();
 toDoListContent.appendChild(container_CreatedTask);
 document.body.appendChild(toDoListContent);
