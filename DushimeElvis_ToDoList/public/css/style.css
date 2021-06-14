@@ -5,9 +5,11 @@ body {
 }
 
 .toDoListContent {
+  text-align: center;
   background-color: rgb(52, 58, 64);
   width: 80%;
   min-height: 300px;
+  border-radius: 5px;
 }
 
 .bg_grey {
@@ -52,6 +54,7 @@ body {
 .container_ButtonFilter button {
   margin-right: 15px;
   background-color: transparent;
+  padding: 5px;
 }
 
 .container_ButtonFilter button:hover {
@@ -139,7 +142,7 @@ i:last-of-type:hover {
 }
 
 .taskNode:last-of-type {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 label {
@@ -149,4 +152,12 @@ label {
 
 .invisible {
   display: none;
+}
+
+.btn_Clear {
+  width: 70%;
+  background-color: rgb(220, 53, 69);
+  color: white;
+  border-radius: 5px;
+  margin-top: 50px;
 }

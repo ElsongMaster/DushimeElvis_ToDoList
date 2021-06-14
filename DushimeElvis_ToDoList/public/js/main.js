@@ -162,5 +162,14 @@ tab_BtnFilter.forEach((elt) => {
   });
 });
 functManipIcon();
-toDoListContent.appendChild(container_CreatedTask);
+let btn_ClearList = document.createElement("button");
+btn_ClearList.textContent = "Clear list";
+btn_ClearList.className = "btn_Clear";
+btn_ClearList.addEventListener("click", () => {
+  Array.from(container_CreatedTask.children).forEach((elt) => {
+    elt.remove();
+  });
+});
+console.log(btn_ClearList);
+toDoListContent.append(container_CreatedTask, btn_ClearList);
 document.body.appendChild(toDoListContent);
