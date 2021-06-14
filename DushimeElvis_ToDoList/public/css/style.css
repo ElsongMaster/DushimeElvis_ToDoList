@@ -79,3 +79,34 @@ body {
 #toDo:hover {
   background-color: rgb(177, 57, 64);
 }
+
+.container_CreatedTask {
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.div_Icon {
+  display: flex;
+  justify-content: space-evenly;
+  min-width: 100px;
+  border: 2px solid yellow;
+}
+
+i {
+  font-size: 25px;
+}
+
+.taskNode {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 5px;
+  background-color: white;
+}
+
+/* label {
+  color: white;
+} */
