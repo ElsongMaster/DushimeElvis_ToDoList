@@ -1,0 +1,81 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toDoListContent {
+  background-color: rgb(52, 58, 64);
+  width: 80%;
+  min-height: 300px;
+}
+.title {
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  margin: 50px 0;
+}
+.container_inputAndButton {
+  display: flex;
+  width: 90%;
+  /* border: 2px solid orangered; */
+}
+
+.container_inputAndButton > * {
+  display: flex;
+  justify-content: center;
+}
+
+.container_input {
+  width: 60%;
+}
+
+.container_input input {
+  padding-left: 5px;
+}
+
+.container_ButtonFilter {
+  width: 40%;
+}
+.container_input *,
+.container_ButtonFilter * {
+  border-radius: 5px;
+}
+
+.container_ButtonFilter button {
+  margin-right: 15px;
+  background-color: transparent;
+}
+
+.container_ButtonFilter button:hover {
+  cursor: pointer;
+  color: white !important;
+}
+
+#All {
+  border: 1px solid rgb(0, 123, 255);
+
+  color: rgb(0, 123, 255);
+}
+#All:hover {
+  background-color: rgb(0, 123, 255);
+}
+
+#Done {
+  border: 1px solid rgb(40, 167, 69);
+
+  color: rgb(40, 167, 69);
+}
+
+#Done:hover {
+  background-color: rgb(40, 167, 69);
+}
+#toDo {
+  border: 1px solid rgb(177, 57, 64);
+
+  color: rgb(177, 57, 64);
+}
+
+#toDo:hover {
+  background-color: rgb(177, 57, 64);
+}
