@@ -9,6 +9,11 @@ body {
   width: 80%;
   min-height: 300px;
 }
+
+.bg_grey {
+  background-color: rgb(52, 58, 64) !important;
+  border: 1px solid #d8d8d8;
+}
 .title {
   text-align: center;
   color: white;
@@ -81,7 +86,7 @@ body {
 }
 
 .container_CreatedTask {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,12 +101,14 @@ body {
 }
 
 i {
+  text-align: center;
+  padding: 5px;
   font-size: 25px;
 }
 
 i:hover {
   cursor: pointer;
-  color: white;
+  color: white !important;
 }
 i:first-of-type {
   color: rgb(255, 193, 7);
@@ -122,11 +129,15 @@ i:last-of-type:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 80%;
   padding: 5px;
   background-color: white;
   border-radius: 5px;
   margin-top: 5px;
+}
+
+.taskNode:last-of-type {
+  margin-bottom: 20px;
 }
 
 label {

@@ -42,6 +42,7 @@ let icon_Edit;
 inputTaskName.addEventListener("keyup", (e) => {
   if (e.key == "Enter") {
     inputCheckBox = document.createElement("input");
+
     Object.assign(inputCheckBox, {
       type: "checkbox",
       id: `${inputTaskName.value}`,
@@ -64,6 +65,10 @@ inputTaskName.addEventListener("keyup", (e) => {
     taskNode.append(div_InputTask, div_Icon);
     container_CreatedTask.appendChild(taskNode);
     inputTaskName.value = "";
+    //Ecoute de l'élément cocher
+    inputCheckBox.addEventListener("click", () => {
+      taskNode.classList.toggle("bg_grey");
+    });
   }
 });
 
