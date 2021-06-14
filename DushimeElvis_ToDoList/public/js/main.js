@@ -38,7 +38,7 @@ let div_Icon;
 let icon_Trash;
 
 let icon_Edit;
-
+let tab_inputCheckBox = [];
 inputTaskName.addEventListener("keyup", (e) => {
   if (e.key == "Enter") {
     inputCheckBox = document.createElement("input");
@@ -48,6 +48,7 @@ inputTaskName.addEventListener("keyup", (e) => {
       id: `${inputTaskName.value}`,
       name: `${inputTaskName.value}`,
     });
+    tab_inputCheckBox.push(inputCheckBox);
     labelInput = document.createElement("label");
     labelInput.setAttribute("for", `${inputTaskName.value}`);
     labelInput.textContent = `${inputTaskName.value}`;
@@ -65,10 +66,15 @@ inputTaskName.addEventListener("keyup", (e) => {
     taskNode.append(div_InputTask, div_Icon);
     container_CreatedTask.appendChild(taskNode);
     inputTaskName.value = "";
-    //Ecoute de l'élément cocher
-    inputCheckBox.addEventListener("click", () => {
-      taskNode.classList.toggle("bg_grey");
-    });
+  }
+});
+
+//Ecoute de l'élément cocher
+container_CreatedTask.addEventListener("click", (e) => {
+  if (e.target.tagName == "INPUT" && e.target.type == "checkbox") {
+    // console.log("condition");
+    // console.log(e.target.parentElement.parentElement);
+    e.target.parentElement.parentElement.classList.toggle("bg_grey");
   }
 });
 
@@ -108,34 +114,52 @@ let functManipIcon = () => {
 let tab_BtnFilter = Array.from(container_ButtonFilter.children);
 console.log(tab_BtnFilter);
 let tab_task;
-let DisplayTaskAccordingBtnFilter = () => {
-  if (tab_BtnFilter.includes(e.target)) {
-    tab_task = Array.from(container_CreatedTask.children);
-    if (e.target == tab_BtnFilter[0]) {
-      tab_task.forEach((elt) => {
-        elt.display = "flex";
-      });
-    } else if (e.target == tab_BtnFilter[0]) {
-      tab_task.forEach((elt) => {
-        if (elt.querySelector("input").checked) {
-          elt.display = "flex";
-        } else {
-          elt.display = "none";
-        }
-      });
-    } else {
-      tab_task.forEach((elt) => {
-        if (elt.querySelector("input").checked) {
-          elt.display = "none";
-        } else {
-          elt.display = "flex";
-        }
-      });
-    }
+let DisplayTaskAccordingBtnFilter = (elt) => {
+  tab_task = Array.from(container_CreatedTask.children);
+  //   console.log(tab_task);
+  let input;
+  if (elt == tab_BtnFilter[0]) {
+    //   console.log(tab_task);
+    console.log("mon Button 1");
+
+    tab_task.forEach((elt) => {
+      elt.classList.remove("invisible");
+      //   elt.hidden = false;
+    });
+  } else if (elt == tab_BtnFilter[1]) {
+    console.log("mon Button 2");
+    tab_task.forEach((elt) => {
+      input = elt.querySelector("input");
+      //   console.log(input);
+      if (input.checked) {
+        elt.classList.remove("invisible");
+        // elt.hidden = false;
+      } else {
+        // elt.hidden = true;
+        elt.classList.add("invisible");
+      }
+    });
+  } else {
+    console.log("mon Button 3");
+
+    tab_task.forEach((elt) => {
+      input = elt.querySelector("input");
+      //   console.log(input);
+      if (input.checked) {
+        // elt.hidden = true;
+        elt.classList.add("invisible");
+      } else {
+        // elt.hidden = false;
+        elt.classList.remove("invisible");
+      }
+    });
   }
+  console.log(tab_task);
 };
 tab_BtnFilter.forEach((elt) => {
-  elt.addEventListener("click", DisplayTaskAccordingBtnFilter);
+  elt.addEventListener("click", (e) => {
+    DisplayTaskAccordingBtnFilter(e.target);
+  });
 });
 functManipIcon();
 toDoListContent.appendChild(container_CreatedTask);
